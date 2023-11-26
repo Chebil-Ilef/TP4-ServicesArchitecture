@@ -1,90 +1,57 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.IO;
-using System.Linq;
+﻿using System.Collections.Generic;
 using TP3.Models;
+using TP4.Repositories;
 using TP4.Services.ServiceContracts;
 
 namespace TP4.Services.Services
 {
     public class MovieService : IMovieService
     {
-        private readonly AppDbContext _db;
+        private readonly IMovieRepository _movieRepository;
 
-        public MovieService(AppDbContext db)
+        public MovieService(IMovieRepository movieRepository)
         {
-            _db = db;
+            _movieRepository = movieRepository;
         }
 
         public List<Movie> GetAllMovies()
         {
-            return _db.movies.ToList();
+            return _movieRepository.GetAllMovies();
         }
 
         public Movie GetMovieById(int id)
         {
-            return _db.movies.Find(id);
+            return _movieRepository.GetMovieById(id);
         }
 
         public void CreateMovie(Movie movie)
         {
-            if (movie.ImageFile != null && movie.ImageFile.Length > 0)
-            {
-                // Save the image file on the server
-                var imagePath = Path.Combine("wwwroot/images", movie.ImageFile.FileName);
-                using (var stream = new FileStream(imagePath, FileMode.Create))
-                {
-                    movie.ImageFile.CopyTo(stream);
-                }
-
-                // Save the image path in the database
-                movie.Photo = $"/images/{movie.ImageFile.FileName}";
-            }
-
-            _db.movies.Add(movie);
-            _db.SaveChanges();
+            _movieRepository.CreateMovie(movie);
         }
 
         public void Edit(Movie movie)
         {
-            _db.Entry(movie).State = EntityState.Modified;
-            _db.SaveChanges();
+            _movieRepository.EditMovie(movie);
         }
 
         public void Delete(int id)
         {
-            var movie = _db.movies.Find(id);
-
-            if (movie != null)
-            {
-                _db.movies.Remove(movie);
-                _db.SaveChanges();
-            }
+            _movieRepository.DeleteMovie(id);
         }
 
-        /*LINQ QUERIES*/
-        public List<Movie> GetMoviesByGenre(int id)
+        public List<Movie> GetMoviesByGenre(int genreId)
         {
-            return _db.movies
-                .Where(m => m.GenresId == id)
-                .ToList();
+            return _movieRepository.GetMoviesByGenre(genreId);
         }
-
 
         public List<Movie> GetAllMoviesOrderedAscending()
         {
-            return _db.movies
-                .OrderBy(m => m.Name)
-                .ToList();
+            return _movieRepository.GetAllMoviesOrderedAscending();
         }
 
-        public List<Movie> GetMoviesByUserDefinedGenre(string name)
+        public List<Movie> GetMoviesByUserDefinedGenre(string userDefinedGenre)
         {
-            return _db.movies
-                .Where(m => m.Genres.GenreName == name)
-                .ToList();
+            return _movieRepository.GetMoviesByUserDefinedGenre(userDefinedGenre);
         }
     }
 }
-
