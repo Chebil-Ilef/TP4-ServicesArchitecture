@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace TP3.Models
 {
@@ -13,6 +14,7 @@ namespace TP3.Models
 
         protected override void OnModelCreating(ModelBuilder model)
         {
+
             base.OnModelCreating(model);
             string GenreJSon = System.IO.File.ReadAllText("GenreSeedData.Json");
             List<Genre>? genres = System.Text.Json.JsonSerializer.Deserialize<List<Genre>>(GenreJSon);

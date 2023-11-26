@@ -10694,11 +10694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\msi\\OneDrive\\Bureau\\TP DOTNET\\TP2 DbFirst\\TP3\\TP3\\TP3.csproj",
-      "projectName": "TP3",
-      "projectPath": "C:\\Users\\msi\\OneDrive\\Bureau\\TP DOTNET\\TP2 DbFirst\\TP3\\TP3\\TP3.csproj",
+      "projectUniqueName": "C:\\Users\\msi\\OneDrive\\Bureau\\TP DOTNET\\TP4\\TP3\\TP4.csproj",
+      "projectName": "TP4",
+      "projectPath": "C:\\Users\\msi\\OneDrive\\Bureau\\TP DOTNET\\TP4\\TP3\\TP4.csproj",
       "packagesPath": "C:\\Users\\msi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\msi\\OneDrive\\Bureau\\TP DOTNET\\TP2 DbFirst\\TP3\\TP3\\obj\\",
+      "outputPath": "C:\\Users\\msi\\OneDrive\\Bureau\\TP DOTNET\\TP4\\TP3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

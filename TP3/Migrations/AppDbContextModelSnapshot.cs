@@ -8,7 +8,7 @@ using TP3.Models;
 
 #nullable disable
 
-namespace TP3.Migrations
+namespace TP4.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -130,9 +130,6 @@ namespace TP3.Migrations
 
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("genre_Id")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

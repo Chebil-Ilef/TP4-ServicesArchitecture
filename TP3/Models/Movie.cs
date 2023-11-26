@@ -7,8 +7,8 @@ namespace TP3.Models
         public int Id { get; set; }
         public string? Name { get; set; }
 
-        [ForeignKey("genre_Id")]
-        public int genre_Id { get; set; }
+        [ForeignKey("GenresId")]
+        public int? GenresId { get; set; }
 
         //Navigation Property
         public virtual Genre?  Genres { get; set; }
